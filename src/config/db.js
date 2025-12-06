@@ -1,9 +1,12 @@
 const mongoose = require("mongoose");
-console.log("MONGO_URI from env:", process.env.MONGO_URI);
 
 const connectDB = async () => {
     try {
-        const conn = await mongoose.connect(process.env.MONG_URI);
+        console.log("MONGO_URI from env:", process.env.MONGO_URI);
+
+        const conn = await mongoose.connect(process.env.MONGO_URI, {
+            dbName: "job_portal",
+        });
         console.log(`MongoDB Connected:${conn.connection.host}`);
     }
     catch (error) {
